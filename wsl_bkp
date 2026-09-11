@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+g=0
+
+sudo apt install --ignore-missing apache2 file assetfinder audacity binutils blt bsdextrautils bsdutils bzip2 cargo ccrypt chromium cmatrix containerd coreutils cpio cpp cron curl dash dbus debconf debianutils  dnsutils docker.io e2fsprogs fakeroot ffmpeg findutils fluidsynth fontconfig ftp g++ gcc gdb ghostscript git gnupg golang gpg gpgconf gpgsm gpgv gzip hostname htop ifupdown iptables isympy3 jackd2 jackd jupyter kbd kmod login logrotate logsave luit make manpages mawk musescore3 ncal netbase nftables nmap openssl pandoc parted patch perl pkgconf plocate polkitd procps psmisc publicsuffix qjackctl qsynth qtractor qtwayland5 radare2 rustc strace sudo systemd tasksel tcpdump tini tmux tnftp tuxguitar tzdata ucf udev unzip upower ure usbmuxd vim w3m wget whiptail whois wordpress xauth xclip zip zsh assetfinder exiftool golang hping3 httprobe iftop jq knockpy micro ncal net-utils nmap nodejs parallel python3-httpx traceroute w3m sqlmap python3 nikto ffuf wfuzz zip mono-mcs jupyter-notebook amass nbtscan arp-scan wfuzz nuclei 0d1n httpx wafw00f jadx netdiscover hydra xsstrike xsser xxeinjector htshells evilgrade katana spraykatz mdk5 mdk3 bully onesixtyone godoh mirage crunch Modlishka termineter commix reaver parallel
+
+# DOCKER PRINCIPAL
+[[ $(groups |grep 'docker') ]] || sudo groupadd docker && sudo usermod -aG docker $USER
+
+# HABILITANDO COMO PADRAO NO SYSTEMD
+if [[ $(groups | grep 'docker') ]]; then
+  sudo systemctl enable docker.service
+  sudo systemctl enable containerd.service
+  sudo systemctl start docker.service
+  g=1
+fi
+
+if [[ $g == "1" ]]; then
+  docker pull sherlock/sherlock &
+  docker pull redis/redisinsight &
+  docker pull nginx  &
+  docker pull redis  &
+fi
+
+go install -v github.com/tomnomnom/anew@latest  # ANEW
+sudo mv anew /usr/sbin/
+
+#[[ $(wc -l .vimrc) < "4" || ! -e .vimrc ]] && echo -e 'syntax on\nset nu\nset tabstop=4\nset expandtab' > .vimrc
