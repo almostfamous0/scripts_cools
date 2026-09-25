@@ -1,0 +1,1 @@
+sudo apt-get install assetfinder exiftool gdb golang hping3 httprobe iftop jq knockpy micro ncal net-utils nmap nodejs parallel python3-httpx sherlock/kali-rolling traceroute w3m sqlmap python3 docker nikto ffuf wfuzz
